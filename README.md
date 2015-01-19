@@ -2,7 +2,7 @@
 
 **Swipehq driver for the Omnipay PHP payment processing library**
 
-Website: http://www.swipehq.co.nz
+Swipe Website: http://www.swipehq.co.nz
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Swipehq support for Omnipay.
@@ -34,9 +34,9 @@ And run composer to update your dependencies:
 
 ## Issues
 
-The current version of this library takes the user to the offsite to process the credit card but has trouble with the Authorise Complete stage, where a verify transaction API is sent.  It returns a 404 Error.  Unforetunately, there is no access here to the initial identifier (which might help?).
+1) The current version of this library takes the user offsite to process a credit card but has trouble with the following Authorise Complete stage, when a verify transaction API is sent.  Presently, it returns a 404 Error.  Unforetunately, there is no access here to the initial identifier or transaction id (which might help?).  Next, will implement the Live Payment Notification feature and test this on a staging site.  The verify transaction API call can be made following receipt of a Live Payment Notification.
 
-Tests are copied from another library
+2) The tests have been copied from another driver library.
 
 Pull request welcome!
 
