@@ -10,7 +10,7 @@
 		"Swipe HQ",
 		"payment"
 	],
-	"homepage": "https://github.com/antonythorpe/omnipay-swipehq",
+	"homepage": "https://github.com/AntonyThorpe/omnipay-swipehq.git",
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
