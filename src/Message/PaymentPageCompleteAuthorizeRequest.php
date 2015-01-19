@@ -22,26 +22,14 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         return $this->getParameter('merchant_id');
     }
 
-    public function setMerchantId($value){
-        return $this->setParameter('merchant_id', $value);
-    }
-
     // API Key
     public function getApiKey(){
         return $this->getParameter('api_key');
     }
 
-    public function setApiKey($value){
-        return $this->setParameter('api_key', $value);
-    }
-
     // Gateway's identifer (issue: returns null.  It would be nice to have it.)
     public function getTransactionReference(){
         return $this->getParameter('transactionReference');
-    }
-
-    public function setTransactionReference($value){
-        return $this->setParameter('transactionReference', $value);
     }
 
        
@@ -70,12 +58,14 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         
         $data['api_key'] = $this->getApiKey();
         $data['merchant_id'] = $this->getMerchantId();
+        $data['identifier_id'] = $this->httpRequest->query->get('identifier_id'));
+        $data['transaction_id'] = $this->httpRequest->query->get('transaction_id');
         
 
         // Problem: Is it possible to access the identifier?  
         // Presently, returning a 404 from Swipehq
 
-        $data['identifier_id'] = $this->getTransactionReference();  // null
+        //$data['identifier_id'] = $this->getTransactionReference();  // null
 
         //$data['tansaction_id'] = $this->getTransactionId();  // null
 
