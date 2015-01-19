@@ -58,7 +58,7 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         
         $data['api_key'] = $this->getApiKey();
         $data['merchant_id'] = $this->getMerchantId();
-        $data['identifier_id'] = $this->httpRequest->query->get('identifier_id'));
+        $data['identifier_id'] = $this->httpRequest->query->get('identifier_id');
         $data['transaction_id'] = $this->httpRequest->query->get('transaction_id');
         
 
