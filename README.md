@@ -2,7 +2,7 @@
 
 **Swipehq driver for the Omnipay PHP payment processing library**
 
-Swipe Website: http://www.swipehq.co.nz
+Swipehq Website: http://www.swipehq.co.nz
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Swipehq support for Omnipay.
