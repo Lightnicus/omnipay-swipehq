@@ -1,0 +1,34 @@
+{
+	"name": "AntonyThorpe/omnipay-swipehq",
+	"type": "library",
+	"description": "Swipehq driver for the Omnipay payment processing library",
+	"keywords": [
+		"gateway",
+		"merchant",
+		"omnipay",
+		"Swipehq",
+		"Swipe HQ",
+		"payment"
+	],
+	"homepage": "https://github.com/antonythorpe/omnipay-swipehq",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"Omnipay\\Swipehq\\": "src/"
+		}
+	},
+	"require": {
+		"omnipay/omnipay": "~1.1"
+	},
+	"require-dev": {
+		"guzzle/plugin-mock": "~3.1",
+		"mockery/mockery": "~0.7",
+		"phpunit/phpunit": "3.7.*@stable",
+		"squizlabs/php_codesniffer": "~1.4"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.8.x-dev"
+		}
+	}
+}
