@@ -1,11 +1,13 @@
 # Omnipay: Swipehq
 
-**Swipehq driver for the Omnipay PHP payment processing library**
+**Swipe HQ driver for the Omnipay PHP payment processing library**
 
-Swipehq Website: http://www.swipehq.co.nz
+Swipe HQ Website: http://www.swipehq.co.nz
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Swipehq support for Omnipay.
+
+Omnipay uses [Symphony2's HttpFoundation Component](http://symfony2-document.readthedocs.org/en/latest/components/http_foundation.html) through [Guzzle](http://docs.guzzlephp.org/en/latest/).  [Symphony2's HttpFoundation Component] replaces some default PHP global variables and functions by an Object-Oriented layer.  [Guzzle] is a PHP HTTP client that makes it easy to send and receive HTTP requests.
 
 ## Installation
 
@@ -32,13 +34,16 @@ And run composer to update your dependencies:
     $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar update
 
-## Issues
+## ToDo
 
-1) The current version of this library takes the user offsite to process a credit card but has trouble with the following Authorise Complete stage, when a verify transaction API is sent.  Presently, it returns a 404 Error.  Unforetunately, there is no access here to the initial identifier or transaction id (which might help?).  Next, will implement the Live Payment Notification feature and test this on a staging site.  The verify transaction API call can be made following receipt of a Live Payment Notification.
+- The tests have been copied from another driver library and have yet to be integrated.
 
-2) The tests have been copied from another driver library.
+Pull request are welcome!
 
-Pull request welcome!
+## Getting Started
+
+- Swipe HQ is an Offsite Payment Gateway so for the Live Payment Notifications (Swipe HQ's servers to yours) to work, you will need a staging server.  The Live Payment Notifications will not be able to find your localhost.
+
 
 ## Support
 
