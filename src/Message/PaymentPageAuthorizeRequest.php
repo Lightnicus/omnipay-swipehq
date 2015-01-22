@@ -6,7 +6,9 @@ use Omnipay\Common\Message\AbstractRequest;
 use GuzzleHttp\Client;
 
 /**
- * PaymentPage Authorize Request (step 1 - from Authorize method)
+ * PaymentPage Authorize Request (from authorize & purchase methods)
+ *
+ * Objective: obtain an identifier from Swipe HQ
  */
 
 class PaymentPageAuthorizeRequest extends AbstractRequest {
@@ -62,15 +64,11 @@ class PaymentPageAuthorizeRequest extends AbstractRequest {
 
         $this->validate('amount', 'returnUrl', 'notifyUrl');
 
-        //var_dump(get_class_methods($this));
-        //var_dump($this->getResponse());
-        //die();
-
         // for connecting to the API
         $data['api_key'] = $this->getApiKey();
         $data['merchant_id'] = $this->getMerchantId();
 
-        // returning to the website
+        // returning to the website following credit card transaction
         $data['td_callback_url'] = $this->getReturnUrl();
 
         // Live Payment Notifications
@@ -83,15 +81,14 @@ class PaymentPageAuthorizeRequest extends AbstractRequest {
         $card = $this->getCard();
         $data['td_email'] = $card->getEmail();
         
-        // Link back to transaction id in SS Shop
+        // Link back to transaction id in eCommerce system
         $data['td_reference'] = $this->getParameter('transactionId');
-        $data['td_user_data'] = $this->getParameter('transactionId');
 
         return $data;
     }
 
 
-    // sending a message server to server
+    // send a message server to server
     public function send(){
         
         // Variables

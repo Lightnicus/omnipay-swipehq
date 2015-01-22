@@ -6,6 +6,8 @@ use Omnipay\Common\Message\AbstractResponse;
 
 /**
  * Swipehq Response
+ *
+ * @example json {"response_code":200,"message":"OK","data":{"transaction_id":"XXXX","status":"declined","transaction_approved":"no"}}
  */
 class PaymentPageCompleteAuthorizeResponse extends AbstractResponse{
 
@@ -30,11 +32,11 @@ class PaymentPageCompleteAuthorizeResponse extends AbstractResponse{
 
 
     /**
-     * Get TransactionID
+     * Get Transaction Reference
      *
      * @return string A reference provided by the gateway to represent this completed transaction.  Note this is not the identifier_id generated using the createTransactionIdentifier API
      */
-    public function getTransactionId(){
+    public function getTransactionReference(){
         $data = $this->data['data'];
 
         if(isset($data['transaction_id'])){
@@ -55,7 +57,7 @@ class PaymentPageCompleteAuthorizeResponse extends AbstractResponse{
            $data = $this->data['data'];
 
            if(isset($data['status'])){
-               return (string) $this->data['status'] === "accepted" || (string) $this->data['status'] === "test-accepted";
+                return $data['status'] === "accepted" || $data['status'] === "test-accepted";
            } else {
                return false;
            } 

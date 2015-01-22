@@ -6,10 +6,10 @@ use Omnipay\Common\Exception\InvalidResponseException;
 use GuzzleHttp\Client;
 
 /**
- * Payment Page Complete Authorize Request (step 2 - completeAuthorize method)
+ * Payment Page Complete Authorize Request (step 2 - from completeAuthorize method)
  *
- * Handle return from off-site gateways after authorization - ie have typed in cc no. and are now have returned to the website.  This helps recreate the state.  Use verifyTransaction API to confirm purchase.  Note that we do not have access to the identifier from Swipehq.  
- * Example response: {"response_code":200,"message":"OK","data":{"transaction_id":"XXXX","status":"declined","transaction_approved":"no"}}
+ * Handle return from off-site gateways after authorization.  The user has typed in cc number, clicked submit and the Live Payment Nofification is made.  Then the user is returned to the website.
+ *  Use verifyTransaction API to confirm purchase.
  */
 
 
@@ -27,57 +27,28 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         return $this->getParameter('api_key');
     }
 
-    // Gateway's identifer (issue: returns null.  It would be nice to have it.)
-    public function getTransactionReference(){
-        return $this->getParameter('transactionReference');
-    }
-
        
     public function getData(){
 
-        // validation check
-        $result = $this->httpRequest->query->get('result');
+        // validation check.  The Live Payment Notification should have provided the identifier_id
+        $result = $this->httpRequest->request->get('identifier_id');
         if (empty($result)) {
             throw new InvalidResponseException;
         }
 
         // prepare data for API
         $data = array();
-
-        //var_dump(get_class_methods($this->httpRequest->query));
-        //var_dump($this->httpRequest->query->all());
-        //var_dump($this->httpRequest->query->keys()); 
-        // var_dump($this->data); // doesn't exist
-        //var_dump($this->httpRequest->request->all());   // null
-        //var_dump($this->httpRequest->query->get('transactionReference'));   // null
-        //var_dump($this->httpRequest->query->get('identifier_id'));   // null
-        //var_dump($this->httpRequest->query->get('transactionId'));  // null
-        //var_dump($this->httpRequest->query->get('td_reference'));  // null
-        //var_dump($this->httpRequest->query->get('identifier'));  // null
-
         
         $data['api_key'] = $this->getApiKey();
         $data['merchant_id'] = $this->getMerchantId();
-        $data['identifier_id'] = $this->httpRequest->query->get('identifier_id');
-        $data['transaction_id'] = $this->httpRequest->query->get('transaction_id');
-        
-
-        // Problem: Is it possible to access the identifier?  
-        // Presently, returning a 404 from Swipehq
-
-        //$data['identifier_id'] = $this->getTransactionReference();  // null
-
-        //$data['tansaction_id'] = $this->getTransactionId();  // null
-
-        // Link back to transaction id in SS Shop
-        //$data['td_reference'] = $this->getParameter('transactionId');  // null
-        //$data['td_user_data'] = $this->getParameter('transactionId');  // null
-
+        $data['identifier_id'] = $this->httpRequest->request->get('identifier_id'); 
+        $data['transaction_id'] = $this->httpRequest->request->get('transaction_id');
  
         return $data;
     }
 
 
+    // send a message server to server
     public function send(){
         
         // Variables
@@ -89,18 +60,6 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
 
         // sends data to the below function
         $create_response = $this->createResponse($httpResponse->json());
-
-        // getting 404
-        /*
-        protected 'response' => 
-                &object(Omnipay\Swipehq\Message\Response)[1104]
-          protected 'data' => 
-            array (size=2)
-              'response_code' => int 404
-              'message' => string 'No results were found' (length=21)
-
-        */
-
         return $create_response;
     }
 

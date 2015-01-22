@@ -72,7 +72,7 @@ class PaymentPageGateway extends AbstractGateway {
 
  
     /**
-    * Authorize and immediately capture an amount on the customer's card (to the site)
+    * Authorize an amount on the customer's card (forwards browser offsite)
     */
     public function purchase(array $parameters = array()){
         return $this->createRequest('\Omnipay\Swipehq\Message\PaymentPagePurchaseRequest', $parameters);
@@ -82,7 +82,8 @@ class PaymentPageGateway extends AbstractGateway {
     /**
     * Authorise an amount on the customer's card
     *
-    * Returns an identifier for the redirection of the browser (I think)
+    * Returns an identifier, which is then used to redirect the browser
+    * @param $parameters array
     */
     public function authorize(array $parameters = array()){
         return $this->createRequest('\Omnipay\Swipehq\Message\PaymentPageAuthorizeRequest', $parameters);
@@ -90,10 +91,9 @@ class PaymentPageGateway extends AbstractGateway {
 
 
     /**
-    * Handle return from off-site gateways after purchase (successful/failed transaction)
+    * Handle Live Payment Notification from off-site gateway following creditcard successful/failed transaction
     *
-    * Note: calls the below function
-    * @var $parameters array clientIp, amount, currency
+    * @param $parameters array e.g. clientIp, amount, currency
     */
     public function completePurchase(array $parameters = array()){
         return $this->completeAuthorize($parameters);
@@ -103,7 +103,7 @@ class PaymentPageGateway extends AbstractGateway {
     /**
     * Handle return from off-site gateways after authorization (called from above)
     *
-    * @var $parameters array clientIp, amount, currency
+    * @param $parameters array e.g. clientIp, amount, currency
     */
     public function completeAuthorize(array $parameters = array()){
         return $this->createRequest('\Omnipay\Swipehq\Message\PaymentPageCompleteAuthorizeRequest', $parameters);
