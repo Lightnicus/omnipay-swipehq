@@ -16,47 +16,22 @@ class PaymentPageAuthorizeRequest extends AbstractRequest {
     protected $endpoint = 'https://api.swipehq.com/createTransactionIdentifier.php';
 
     // Merchant ID
-    public function getMerchantId(){
+    public function getMerchant_id(){
         return $this->getParameter('merchant_id');
     }
 
-    public function setMerchantId($value){
+    public function setMerchant_id($value){
         return $this->setParameter('merchant_id', $value);
     }
 
     // API Key
-    public function getApiKey(){
+    public function getApi_key(){
         return $this->getParameter('api_key');
     }
 
-    public function setApiKey($value){
+    public function setApi_key($value){
         return $this->setParameter('api_key', $value);
     }
-
-    public function getDescription(){
-        return $this->getParameter('description');
-    }
-
-    public function setDescription($value){
-        return $this->setParameter('description', $value);
-    }
-
-    public function getTransactionId(){
-        return $this->getParameter('transactionId');
-    }
-
-    public function setTransactionId($value){
-        return $this->setParameter('transactionId', $value);
-    }
-
-    public function getTransactionReference(){
-        return $this->getParameter('transactionReference');
-    }
-
-    public function setTransactionReference($value){
-        return $this->setParameter('transactionReference', $value);
-    }
-
 
     public function getData(){
 
@@ -65,8 +40,8 @@ class PaymentPageAuthorizeRequest extends AbstractRequest {
         $this->validate('amount', 'returnUrl', 'notifyUrl');
 
         // for connecting to the API
-        $data['api_key'] = $this->getApiKey();
-        $data['merchant_id'] = $this->getMerchantId();
+        $data['api_key'] = $this->getApi_key();
+        $data['merchant_id'] = $this->getMerchant_id();
 
         // returning to the website following credit card transaction
         $data['td_callback_url'] = $this->getReturnUrl();

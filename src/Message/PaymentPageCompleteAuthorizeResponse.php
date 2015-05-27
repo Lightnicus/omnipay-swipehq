@@ -37,10 +37,53 @@ class PaymentPageCompleteAuthorizeResponse extends AbstractResponse{
      * @return string A reference provided by the gateway to represent this completed transaction.  Note this is not the identifier_id generated using the createTransactionIdentifier API
      */
     public function getTransactionReference(){
-        $data = $this->data['data'];
+        if(empty($this->data['data'])){
+            return null;
+        } else {
+            $data = $this->data['data'];
+            if(empty($data['transaction_id'])){
+                return null;
+            } else {
+                return $data['transaction_id'];
+            }
+        }
+    }
 
-        if(isset($data['transaction_id'])){
-            return (string) $this->data['transaction_id'];
+
+    /**
+     * getStatus
+     *
+     * @return string A status message provided by the gateway to represent the success or failure of the transaction
+     */
+    public function getStatus(){
+        if(empty($this->data['data'])){
+            return null;
+        } else {
+            $data = $this->data['data'];
+            if(empty($data['status'])){
+                return null;
+            } else {
+                return $data['status'];
+            }
+        }
+    }
+
+
+    /**
+     * getTransactionApproved
+     *
+     * @return string Another message provided by the gateway to represent to represent the success or failure of the transaction
+     */
+    public function getTransactionApproved(){
+        if(empty($this->data['data'])){
+            return null;
+        } else {
+            $data = $this->data['data'];
+            if(empty($data['transaction_approved'])){
+                return null;
+            } else {
+                return $data['transaction_approved'];
+            }
         }
     }
 

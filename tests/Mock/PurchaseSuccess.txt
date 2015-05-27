@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Tue, 19 May 2015 06:25:26 GMT
+Server: Apache
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Location: https://payment.swipehq.com/processing.php
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 20
+Keep-Alive: timeout=35, max=499
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+{"response_code":200,"message":"OK","data":{"identifier":"bar123"}}

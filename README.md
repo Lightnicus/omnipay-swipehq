@@ -5,7 +5,7 @@
 Swipe HQ Website: http://www.swipehq.co.nz
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
-processing library for PHP 5.3+. This package implements Swipehq support for Omnipay.
+processing library for PHP 5.3+. This package implements Swipehq support for Omnipay v 1.1.
 
 Omnipay uses [Symphony2's HttpFoundation Component](http://symfony2-document.readthedocs.org/en/latest/components/http_foundation.html) through [Guzzle](http://docs.guzzlephp.org/en/latest/).  [Symphony2's HttpFoundation Component] replaces some default PHP global variables and functions by an Object-Oriented layer.  [Guzzle] is a PHP HTTP client that makes it easy to send and receive HTTP requests.
 
@@ -34,11 +34,11 @@ And run composer to update your dependencies:
     $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar update
 
-## ToDo
+## Tests
 
-- The tests have been copied from another driver library and have yet to be integrated.
+- Four fail: testAuthorizeParameters, testCompleteAuthorizeParameters, testPurchaseParameters, and testCompletePurchaseParameters in GatewayTestCase.php.  These are a base suite of tests that come with Omnipay.  There appears to be problems with returning data from getMerchant_id and getApi_key functions from within PaymentPageAuthorizeRequest class.   
 
-Pull request are welcome!
+Pull request are welcome!  
 
 ## Getting Started
 

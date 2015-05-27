@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Tue, 19 May 2015 05:42:55 GMT
+Server: Apache
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 7963
+Keep-Alive: timeout=35, max=500
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+{"response_code":400,"message":"Access Denied"}

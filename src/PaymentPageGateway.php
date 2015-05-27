@@ -25,20 +25,20 @@ class PaymentPageGateway extends AbstractGateway {
     }
 
     // Merchant ID
-    public function getMerchantId(){
+    public function getMerchant_id(){
         return $this->getParameter('merchant_id');
     }
 
-    public function setMerchantId($value){
+    public function setMerchant_id($value){
         return $this->setParameter('merchant_id', $value);
     }
 
     // API Key
-    public function getApiKey() {
+    public function getApi_key() {
         return $this->getParameter('api_key');
     }
 
-    public function setApiKey($value) {
+    public function setApi_key($value) {
         return $this->setParameter('api_key', $value);
     }
 

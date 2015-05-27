@@ -43,14 +43,16 @@ class PaymentPageAuthorizeResponse extends AbstractResponse implements RedirectR
      * @return string A reference provided by the gateway to represent this transaction.  The identifier.
      */
     public function getTransactionReference(){
-        $data = $this->data['data'];
-        
-        if(empty($data['identifier'])){
+        if(empty($this->data['data'])){
             return null;
         } else {
-            return $data['identifier'];
+            $data = $this->data['data'];
+            if(empty($data['identifier'])){
+                return null;
+            } else {
+                return (string) $data['identifier'];
+            }
         }
-
     }
 
 
