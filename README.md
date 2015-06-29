@@ -23,7 +23,7 @@ to your `composer.json` file:
             }
         ],
     "require": {
-        "antonythorpe/omnipay-swipehq": "dev-master"
+        "antonythorpe/omnipay-swipehq": "1.0.0"
     }
 }
 ```
