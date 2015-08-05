@@ -23,7 +23,7 @@ to your `composer.json` file:
             }
         ],
     "require": {
-        "antonythorpe/omnipay-swipehq": "1.0.0"
+        "antonythorpe/omnipay-swipehq": "1.0.1"
     }
 }
 ```
@@ -34,12 +34,7 @@ And run composer to update your dependencies:
     $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar update
 
-## Tests
-
-- Four fail: testAuthorizeParameters, testCompleteAuthorizeParameters, testPurchaseParameters, and testCompletePurchaseParameters in GatewayTestCase.php.  These are a base suite of tests that come with Omnipay.  There appears to be problems with returning data from getMerchant_id and getApi_key functions from within PaymentPageAuthorizeRequest class.   
-
-Pull request are welcome!  
-
+  
 ## Getting Started
 
 - Swipe HQ is an Offsite Payment Gateway so for the Live Payment Notifications (Swipe HQ's servers to yours) to work, you will need a staging server.  The Live Payment Notifications will not be able to find your localhost.
