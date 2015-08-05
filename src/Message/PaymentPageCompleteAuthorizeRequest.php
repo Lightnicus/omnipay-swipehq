@@ -18,12 +18,12 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
     protected $endpoint = 'https://api.swipehq.com/verifyTransaction.php';
 
     // Merchant ID
-    public function getMerchant_id(){
+    public function getMerchantId(){
         return $this->getParameter('merchant_id');
     }
 
     // API Key
-    public function getApi_key(){
+    public function getApiKey(){
         return $this->getParameter('api_key');
     }
 
@@ -39,8 +39,8 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         // prepare data for API
         $data = array();
         
-        $data['api_key'] = $this->getApi_key();
-        $data['merchant_id'] = $this->getMerchant_id();
+        $data['api_key'] = $this->getApiKey();
+        $data['merchant_id'] = $this->getMerchantId();
         $data['identifier_id'] = $this->httpRequest->request->get('identifier_id'); 
         $data['transaction_id'] = $this->httpRequest->request->get('transaction_id');
  
