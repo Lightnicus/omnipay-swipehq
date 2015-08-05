@@ -22,8 +22,16 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         return $this->getParameter('merchant_id');
     }
 
+    public function getMerchant_id(){
+        return $this->getParameter('merchant_id');
+    }
+
     // API Key
     public function getApiKey(){
+        return $this->getParameter('api_key');
+    }
+
+    public function getApi_key(){
         return $this->getParameter('api_key');
     }
 
