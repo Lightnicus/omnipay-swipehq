@@ -41,7 +41,8 @@ class PaymentPageCompleteAuthorizeRequest extends PaymentPageAuthorizeRequest{
         // validation check.  The Live Payment Notification should have provided the identifier_id
         $result = $this->httpRequest->request->get('identifier_id');
         if (empty($result)) {
-            throw new InvalidResponseException;
+            $message = $this->httpRequest->request->get('response_message');
+            throw new InvalidResponseException($message);
         }
 
         // prepare data for API
