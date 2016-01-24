@@ -20,11 +20,6 @@
 	"require": {
 		"omnipay/omnipay": "~1.1"
 	},
-	"autoload": {
-		"psr-4": {
-			"Omnipay\\Swipehq\\": "src/"
-		}
-	},
 	"require-dev": {
 		"guzzle/plugin-mock": "~3.1",
 		"mockery/mockery": "~0.7",
