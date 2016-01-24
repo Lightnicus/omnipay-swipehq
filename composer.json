@@ -1,7 +1,7 @@
 {
-	"name": "AntonyThorpe/omnipay-swipehq",
+	"name": "Lightnicus/omnipay-swipehq",
 	"type": "library",
-	"description": "Swipehq driver for the Omnipay payment processing library",
+	"description": "Swipehq driver for the Omnipay payment processing library with improved error handling",
 	"keywords": [
 		"gateway",
 		"merchant",
@@ -10,7 +10,7 @@
 		"Swipe HQ",
 		"payment"
 	],
-	"homepage": "https://github.com/AntonyThorpe/omnipay-swipehq.git",
+	"homepage": "https://github.com/Lightnicus/omnipay-swipehq.git",
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
